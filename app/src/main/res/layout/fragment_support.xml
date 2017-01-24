@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deductions : "
+            android:textColor="#D50000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/your_deductions_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$00.00"
+            android:textColor="#D50000"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimary" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <EditText
+            android:id="@+id/enter_amount_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/enter_amount_tv"
+            android:layout_alignRight="@id/enter_amount_tv"
+            android:layout_below="@+id/enter_amount_tv"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/add_btn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/enter_month_tv"
+            android:background="@drawable/add" />
+
+        <TextView
+            android:id="@+id/enter_amount_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_toLeftOf="@+id/add_btn"
+            android:layout_toStartOf="@+id/add_btn"
+            android:text="Enter Amount($)" />
+
+        <TextView
+            android:id="@+id/enter_year_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text=" Enter Year " />
+
+        <Spinner
+            android:id="@+id/date_picker_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/enter_month_tv"
+            android:layout_below="@+id/enter_month_tv"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/enter_amount_et"
+            android:layout_toStartOf="@+id/enter_amount_et" />
+
+        <TextView
+            android:id="@+id/enter_month_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="18dp"
+            android:layout_toLeftOf="@+id/enter_amount_et"
+            android:layout_toStartOf="@+id/enter_amount_et"
+            android:text=" Enter Month " />
+
+        <Spinner
+            android:id="@+id/enter_year_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/enter_year_tv"
+            android:layout_alignStart="@+id/enter_year_tv"
+            android:layout_below="@+id/enter_year_tv"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

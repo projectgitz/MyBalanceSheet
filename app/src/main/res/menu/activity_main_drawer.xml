@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/summary_view"
+            android:icon="@drawable/monthly_view"
+            android:title="Summary" />
+        <item
+            android:id="@+id/monthly_view"
+            android:icon="@drawable/monthly_view"
+            android:title="Monthly View" />
+        <item
+            android:id="@+id/balance_sheet"
+            android:icon="@drawable/balance_sheet"
+            android:title="Balance Sheet" />
+        <item
+            android:id="@+id/support"
+            android:icon="@drawable/support"
+            android:title="Support" />
+        <item
+            android:id="@+id/other_deductions_item"
+            android:icon="@drawable/money_deductions"
+            android:title="Other Deductions" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/vendor_hours"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Vendor Hours" />
+            <item
+                android:id="@+id/vendor_payments"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Vendor Payments" />
+        </menu>
+    </item>
+
+</menu>
