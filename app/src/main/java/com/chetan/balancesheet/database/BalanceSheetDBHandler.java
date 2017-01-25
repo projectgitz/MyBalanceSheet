@@ -101,9 +101,9 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
     public void insertPayCheck(BalanceSheetDetails balanceSheetDetails) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DBConstants.COLUMN_START_DATE, dateFormat.format(balanceSheetDetails.getStartDate()));
-        values.put(DBConstants.COLUMN_END_DATE, dateFormat.format(balanceSheetDetails.getEndDate()));
-        values.put(DBConstants.COLUMN_PAYCHECKDATE, balanceSheetDetails.getPayCheckDate());
+//        values.put(DBConstants.COLUMN_START_DATE, dateFormat.format(balanceSheetDetails.getStartDate()));
+//        values.put(DBConstants.COLUMN_END_DATE, dateFormat.format(balanceSheetDetails.getEndDate()));
+//        values.put(DBConstants.COLUMN_PAYCHECKDATE, balanceSheetDetails.getPayCheckDate());
         values.put(DBConstants.COLUMN_OPENING_BALANCE, balanceSheetDetails.getOpeningBalance());
         values.put(DBConstants.COLUMN_RATE, balanceSheetDetails.getRate());
         values.put(DBConstants.COLUMN_HOURS, balanceSheetDetails.getHours());
@@ -111,17 +111,6 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
         values.put(DBConstants.COLUMN_DEBIT, balanceSheetDetails.getDebit());
         values.put(DBConstants.COLUMN_ENDING_BALANCE, balanceSheetDetails.getEndingBalance());
         database.insert(DBConstants.TABLE_NAME_BALANCESHEET, null, values);
-
-        Log.d("Database", "insertingRecordsWithValues() method....");
-        Log.d("Database", "period..." + balanceSheetDetails.getStartDate());
-        Log.d("Database", "payCheckDate..." + balanceSheetDetails.getPayCheckDate());
-        Log.d("Database", "opening balance..." + balanceSheetDetails.getOpeningBalance());
-        Log.d("Database", "rate..." + balanceSheetDetails.getRate());
-        Log.d("Database", "hours..." + balanceSheetDetails.getHours());
-        Log.d("Database", "credit..." + balanceSheetDetails.getCredit());
-        Log.d("Database", "debit..." + balanceSheetDetails.getDebit());
-        Log.d("Database", "endingBalance..." + balanceSheetDetails.getEndingBalance());
-        Log.d("Database", "Inserting all the values...");
         database.close();
     }
 
