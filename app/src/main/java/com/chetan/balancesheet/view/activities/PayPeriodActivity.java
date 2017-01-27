@@ -19,7 +19,6 @@ import com.chetan.balancesheet.model.BalanceSheetDetails;
 public class PayPeriodActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String EXTRA_TITLE = "EXTRA_TITLE";
-    private TextView titleTV;
     private Button submit;
 
     private TextView openingBalanceTV;
@@ -109,8 +108,6 @@ public class PayPeriodActivity extends AppCompatActivity implements View.OnClick
         mPref = BalanceSheetApplication.getInstance().getSharedPreferences(PREF_NAME, MODE_PRIVATE);
         String title = getIntent().getStringExtra(EXTRA_TITLE);
         setTitle(title);
-        titleTV = (TextView) findViewById(R.id.pay_check_main_tv);
-        titleTV.setText(title);
 
         //TODO create dialogPicker for picking dates for below fields
         findViewById(R.id.start_pay_period_et); //Date Picker
@@ -133,7 +130,7 @@ public class PayPeriodActivity extends AppCompatActivity implements View.OnClick
             openingBalanceTV.setText("0");
         } else {
             openingBalanceTV.setText(savedPrefValue);
-            finalBalanceTV.setText(savedPrefValue);
+            finalBalanceTV.setText("$" + savedPrefValue);
         }
 
         hoursET = (EditText) findViewById(R.id.hours_et);

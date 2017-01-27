@@ -3,36 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="20dp"
     tools:context=".view.activities.PayPeriodActivity">
 
-    <TextView
-        android:id="@+id/pay_check_main_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="First Pay Check"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <View
-        android:id="@+id/divider_after_first_pay_check_heading"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/pay_check_main_tv"
-        android:background="#616161" />
 
     <TextView
         android:id="@+id/start_pay_period_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
         android:layout_below="@+id/divider_after_first_pay_check_heading"
         android:layout_marginTop="10dp"
-        android:text="Start Period :"
+        android:text="Start Period:"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -40,22 +22,23 @@
         android:id="@+id/start_pay_period_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/start_pay_period_tv"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
-        android:ems="8"
+        android:layout_alignLeft="@id/start_pay_period_tv"
+        android:layout_below="@+id/start_pay_period_tv"
+        android:ems="5"
+        android:hint="Select Date"
         android:gravity="center"
-        android:textSize="16sp"
-        tools:text="01/15/16" />
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/end_pay_period_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/start_pay_period_tv"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
-        android:text="End Period :"
+        android:text="End Period:"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -63,21 +46,22 @@
         android:id="@+id/end_pay_period_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/end_pay_period_tv"
+        android:layout_alignLeft="@id/end_pay_period_tv"
+        android:layout_below="@id/end_pay_period_tv"
+        android:layout_marginRight="10dp"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="10dp"
-        android:ems="8"
+        android:ems="5"
         android:gravity="center"
         android:textSize="16sp"
-        tools:text="01/15/16" />
+        android:hint="Select Date"/>
 
     <TextView
         android:id="@+id/paycheck_date_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/end_pay_period_tv"
-        android:layout_marginTop="10dp"
-        android:text="PayCheck Date : "
+        android:layout_below="@+id/end_pay_period_et"
+        android:layout_centerHorizontal="true"
+        android:text="PayCheck Date: "
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -85,41 +69,56 @@
         android:id="@+id/paycheck_date_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/paycheck_date_tv"
-        android:layout_alignParentRight="true"
-        android:ems="8"
-        android:gravity="center"
-        android:textSize="16sp"
-        tools:text="02/10/16" />
-
-    <TextView
-        android:id="@+id/opening_balance_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_below="@id/paycheck_date_tv"
-        android:layout_marginTop="10dp"
-        android:text="Opening Balance :"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/opening_balance_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/opening_balance_tv"
-        android:layout_alignParentRight="true"
-        android:ems="8"
+        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@id/paycheck_date_tv"
+        android:layout_alignRight="@id/paycheck_date_tv"
+        android:ems="5"
         android:gravity="center"
         android:textSize="16sp"
-        tools:text="$5230.00" />
+        android:hint="Select Date"/>
+
+    <RelativeLayout
+        android:id="@+id/opening_balance_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_below="@id/paycheck_date_et"
+        android:background="@color/add_btn_blue">
+
+        <TextView
+            android:id="@+id/opening_balance_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Opening Balance:"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/opening_balance_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="$5230.00" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/rate_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/opening_balance_tv"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/opening_balance_layout"
         android:layout_marginTop="10dp"
-        android:text="Rate : "
+        android:text="Rate: "
+        android:ems="6"
+        android:gravity="center"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -127,9 +126,13 @@
         android:id="@+id/rate_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/rate_tv"
-        android:layout_alignParentRight="true"
-        android:ems="8"
+        android:layout_below="@id/rate_tv"
+        android:layout_alignLeft="@id/rate_tv"
+        android:layout_alignRight="@id/rate_tv"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBaseline="@+id/hours_et"
+        android:layout_alignParentLeft="true"
+        android:ems="6"
         android:gravity="center"
         android:textSize="16sp"
         tools:text="$50.59" />
@@ -138,9 +141,13 @@
         android:id="@+id/hours_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rate_tv"
-        android:layout_marginTop="10dp"
-        android:text="Hours :"
+        android:layout_below="@id/opening_balance_layout"
+        android:layout_alignParentRight="true"
+        android:layout_alignBaseline="@id/rate_tv"
+        android:layout_marginRight="10dp"
+        android:text="Hours:"
+        android:gravity="center"
+        android:ems="6"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -148,20 +155,25 @@
         android:id="@+id/hours_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/hours_tv"
+        android:layout_below="@id/hours_tv"
         android:layout_alignParentRight="true"
-        android:ems="8"
+        android:layout_alignLeft="@id/hours_tv"
+        android:layout_alignRight="@id/hours_tv"
         android:gravity="center"
-        android:textSize="16sp"
-        tools:text="80hrs" />
+        android:layout_marginRight="10dp"
+        android:ems="6"
+        android:hint="Enter hours"
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/credit_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/hours_tv"
+        android:layout_below="@id/rate_et"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="Credit : "
+        android:text="Credited($):"
+        android:textColor="#FF9800"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -169,20 +181,24 @@
         android:id="@+id/credit_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/credit_tv"
-        android:layout_alignParentRight="true"
-        android:ems="8"
+        android:layout_below="@id/credit_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@id/credit_tv"
+        android:layout_alignRight="@id/credit_tv"
+        android:textColor="#FF9800"
         android:gravity="center"
         android:textSize="16sp"
-        tools:text="$3450.89" />
+        android:hint="$$$"/>
 
     <TextView
         android:id="@+id/debit_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/credit_tv"
+        android:layout_below="@id/credit_et"
         android:layout_marginTop="10dp"
-        android:text="Debit :"
+        android:layout_centerHorizontal="true"
+        android:text="Debited($):"
+        android:textColor="#F44336"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -190,46 +206,51 @@
         android:id="@+id/debit_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/credit_tv"
-        android:ems="8"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/debit_tv"
+        android:ems="6"
+        android:textColor="#F44336"
+        android:hint="Enter Amount"
         android:gravity="center"
-        android:textSize="16sp"
-        tools:text="$2500.00" />
+        android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/ending_balance_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/debit_tv"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/debit_et"
         android:layout_marginTop="10dp"
-        android:text="Remaining Balance :"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-
-    <TextView
-        android:id="@+id/ending_balance_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="8"
         android:gravity="center"
-        android:textSize="16sp"
-        tools:text="Opening + (credit - debit)"
-        android:layout_alignBaseline="@+id/ending_balance_tv"
-        android:layout_alignBottom="@+id/ending_balance_tv"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:background="@color/green"
+        android:id="@+id/ending_balance_layout">
 
+        <TextView
+            android:id="@+id/ending_balance_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:text="Remaining Balance:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ending_balance_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:textColor="#000000"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            tools:text="Opening + (credit - debit)"/>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/submit_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ending_balance_et"
+        android:layout_below="@+id/ending_balance_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:background="#616161"
         android:ems="6"
         android:text="Submit"
@@ -250,8 +271,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/first_divider_after_save_button"
+        android:textColor="#4CAF50"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="$$"
         android:gravity="center"
-        android:text="Balance: ____ " />
+        />
 
 
 </RelativeLayout>
