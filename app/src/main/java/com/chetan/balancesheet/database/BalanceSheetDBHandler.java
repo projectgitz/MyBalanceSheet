@@ -65,6 +65,7 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
                 DBConstants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 DBConstants.COLUMN_START_DATE + " DATE," +
                 DBConstants.COLUMN_END_DATE + " DATE," +
+                DBConstants.COLUMN_PAYCHECKDATE + " DATE," +
                 DBConstants.COLUMN_OPENING_BALANCE + " REAL," +
                 DBConstants.COLUMN_RATE + " REAL," +
                 DBConstants.COLUMN_HOURS + " REAL," +
@@ -103,7 +104,10 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 //        values.put(DBConstants.COLUMN_START_DATE, dateFormat.format(balanceSheetDetails.getStartDate()));
 //        values.put(DBConstants.COLUMN_END_DATE, dateFormat.format(balanceSheetDetails.getEndDate()));
-//        values.put(DBConstants.COLUMN_PAYCHECKDATE, balanceSheetDetails.getPayCheckDate());
+
+        values.put(DBConstants.COLUMN_START_DATE, balanceSheetDetails.getStartDate());
+        values.put(DBConstants.COLUMN_END_DATE, balanceSheetDetails.getEndDate());
+        values.put(DBConstants.COLUMN_PAYCHECKDATE, balanceSheetDetails.getPayCheckDate());
         values.put(DBConstants.COLUMN_OPENING_BALANCE, balanceSheetDetails.getOpeningBalance());
         values.put(DBConstants.COLUMN_RATE, balanceSheetDetails.getRate());
         values.put(DBConstants.COLUMN_HOURS, balanceSheetDetails.getHours());
@@ -120,7 +124,7 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
         Cursor cursor = database.query(DBConstants.TABLE_NAME_BALANCESHEET, null, null, null, null, null, null, null);
         if (cursor.getCount() > 0) {
             cursor.moveToLast();
-            openingBalance = cursor.getDouble(cursor.getColumnIndex(DBConstants.COLUMN_OPENING_BALANCE));
+            openingBalance = cursor.getDouble(cursor.getColumnIndex(DBConstants.COLUMN_ENDING_BALANCE));
         }
         cursor.close();
         return openingBalance;

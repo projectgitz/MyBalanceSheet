@@ -11,8 +11,8 @@ import java.util.Date;
 public class BalanceSheetDetails {
 
     private int _id;
-    private Date _startDate;
-    private Date _endDate;
+    private String _startDate;
+    private String _endDate;
     private String _payCheckDate;
     private float _openingBalance;
     private float _rate;
@@ -25,7 +25,7 @@ public class BalanceSheetDetails {
     }
 
     //constructor without Id
-    public BalanceSheetDetails(Date startDate, Date endDate, String payCheckDate,
+    public BalanceSheetDetails(String startDate, String endDate, String payCheckDate,
                                float openingBalance, float rate,
                                int hours, float credit, float debit, float endingBalance) {
         this._startDate = startDate;
@@ -47,91 +47,75 @@ public class BalanceSheetDetails {
         this._id = _id;
     }
 
-    public Date getStartDate() {
-        Log.d("database", "getPeriod()..." + _startDate);
+    public String getStartDate() {
         return _startDate;
     }
 
-    public void setStartDate(Date _period) {
+    public void setStartDate(String _period) {
         this._startDate = _period;
-        Log.d("database", "setPeriod()..." + _period);
     }
 
     public String getPayCheckDate() {
-        Log.d("database", "getPayCheckDate()..." + _payCheckDate);
         return _payCheckDate;
     }
 
     public void setPayCheckDate(String _payCheckDate) {
         this._payCheckDate = _payCheckDate;
-        Log.d("database", "setPayCheckDate()..." + _payCheckDate);
     }
 
     public float getOpeningBalance() {
-        Log.d("database", "getOpeningBalance()..." + _openingBalance);
         return _openingBalance;
     }
 
     public void setOpeningBalance(float _openingBalance) {
         this._openingBalance = _openingBalance;
-        Log.d("database", "setOpeningBalance()..." + _openingBalance);
     }
 
     public float getRate() {
-        Log.d("database", "getRate()..." + _rate);
         return _rate;
     }
 
     public void setRate(float _rate) {
         this._rate = _rate;
-        Log.d("database", "setRate()..." + _rate);
     }
 
     public int getHours() {
-        Log.d("database", "getHours()..." + _hours);
         return _hours;
     }
 
     public void setHours(int _hours) {
         this._hours = _hours;
-        Log.d("database", "setHours()..." + _hours);
     }
 
     public float getCredit() {
-        Log.d("database", "getCredit()..." + _credit);
         return _credit;
     }
 
     public void setCredit(float _credit) {
         this._credit = _credit;
-        Log.d("database", "setCredit()..." + _credit);
     }
 
     public float getDebit() {
-        Log.d("database", "getDebit()..." + _debit);
         return _debit;
     }
 
     public void setDebit(float _debit) {
         this._debit = _debit;
-        Log.d("database", "setDebit()..." + _debit);
     }
 
     public float getEndingBalance() {
-        Log.d("database", "getEndingBalance()..." + _endingBalance);
         return _endingBalance;
     }
 
     public void setEndingBalance(float _endingBalance) {
         this._endingBalance = _endingBalance;
-        Log.d("database", "setEndingBalance()..." + _endingBalance);
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return _endDate;
     }
 
-    public void setEndDate(Date _endDate) {
+    public void setEndDate(String _endDate) {
         this._endDate = _endDate;
     }
 }

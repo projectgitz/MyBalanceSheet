@@ -11,10 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@+id/divider_after_first_pay_check_heading"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:text="Start Period:"
+        android:ems="6"
+        android:gravity="center"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -23,22 +24,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
-        android:layout_alignLeft="@id/start_pay_period_tv"
+        android:layout_alignLeft="@+id/start_pay_period_tv"
+        android:layout_marginLeft="15dp"
         android:layout_below="@+id/start_pay_period_tv"
-        android:ems="5"
-        android:hint="Select Date"
+        android:ems="6"
         android:gravity="center"
+        android:hint="Select Date"
         android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/end_pay_period_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="15dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:text="End Period:"
+        android:ems="6"
+        android:gravity="center"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -48,9 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/end_pay_period_tv"
         android:layout_below="@id/end_pay_period_tv"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="15dp"
         android:layout_alignParentRight="true"
-        android:ems="5"
+        android:ems="6"
         android:gravity="center"
         android:textSize="16sp"
         android:hint="Select Date"/>
@@ -73,7 +76,6 @@
         android:layout_centerHorizontal="true"
         android:layout_alignLeft="@id/paycheck_date_tv"
         android:layout_alignRight="@id/paycheck_date_tv"
-        android:ems="5"
         android:gravity="center"
         android:textSize="16sp"
         android:hint="Select Date"/>
@@ -159,6 +161,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@id/hours_tv"
         android:layout_alignRight="@id/hours_tv"
+        android:inputType="numberDecimal"
         android:gravity="center"
         android:layout_marginRight="10dp"
         android:ems="6"
@@ -211,6 +214,7 @@
         android:ems="6"
         android:textColor="#F44336"
         android:hint="Enter Amount"
+        android:inputType="numberDecimal"
         android:gravity="center"
         android:textSize="16sp"/>
 

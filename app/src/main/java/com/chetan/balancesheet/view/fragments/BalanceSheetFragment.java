@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.chetan.balancesheet.R;
 import com.chetan.balancesheet.base.BalanceSheetApplication;
+import com.chetan.balancesheet.database.BalanceSheetDBHandler;
+import com.chetan.balancesheet.utils.Utils;
 import com.chetan.balancesheet.view.activities.PayPeriodActivity;
 
 /**
@@ -24,12 +26,6 @@ public class BalanceSheetFragment extends BaseBalanceSheetFragment implements Vi
     private Button firstPayPeriodButton;
     private Button secondPayPeriodButton;
     private TextView finalBalanceTV;
-
-    //Shared Preferences
-    private SharedPreferences mPref;
-    private String savedPrefValue;
-    private String SAVED_OPENING_BALANACE_KEY = "OPENING_BALANCE_KEY";
-    private String PREF_NAME = "BALANCESHEET_PREF";
 
     @Nullable
     @Override
@@ -44,13 +40,11 @@ public class BalanceSheetFragment extends BaseBalanceSheetFragment implements Vi
         firstPayPeriodButton = (Button) view.findViewById(R.id.first_pay_period_btn);
         secondPayPeriodButton = (Button) view.findViewById(R.id.second_pay_period_btn);
         finalBalanceTV = (TextView) view.findViewById(R.id.bs_final_balance_tv);
-        mPref = BalanceSheetApplication.getInstance().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        savedPrefValue = mPref.getString(SAVED_OPENING_BALANACE_KEY, "");
-        if(savedPrefValue.length() == 0) {
-            finalBalanceTV.setText("Balance: $" + "00.00");
-        } else {
-            finalBalanceTV.setText("Balance: $" + savedPrefValue);
-        }
+
+        double balanceAmount = BalanceSheetDBHandler.getInstance().getOpeningBalance();
+        String decimalFormattedBalAmt = Utils.decimalFormatter(balanceAmount);
+        finalBalanceTV.setText("Balance: $" + "00.00");
+        finalBalanceTV.setText("Balance: $" + decimalFormattedBalAmt);
 
         firstPayPeriodButton.setOnClickListener(this);
         secondPayPeriodButton.setOnClickListener(this);
