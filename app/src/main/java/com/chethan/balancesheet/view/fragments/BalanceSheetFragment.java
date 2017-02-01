@@ -1,8 +1,6 @@
 package com.chethan.balancesheet.view.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.chethan.balancesheet.R;
-import com.chethan.balancesheet.base.BalanceSheetApplication;
 import com.chethan.balancesheet.database.BalanceSheetDBHandler;
 import com.chethan.balancesheet.utils.Utils;
 import com.chethan.balancesheet.view.activities.PayPeriodActivity;
@@ -41,13 +38,23 @@ public class BalanceSheetFragment extends BaseBalanceSheetFragment implements Vi
         secondPayPeriodButton = (Button) view.findViewById(R.id.second_pay_period_btn);
         finalBalanceTV = (TextView) view.findViewById(R.id.bs_final_balance_tv);
 
+        setBalanceAmount();
+
+        firstPayPeriodButton.setOnClickListener(this);
+        secondPayPeriodButton.setOnClickListener(this);
+    }
+
+    private void setBalanceAmount() {
         double balanceAmount = BalanceSheetDBHandler.getInstance().getOpeningBalance();
         String decimalFormattedBalAmt = Utils.decimalFormatter(balanceAmount);
         finalBalanceTV.setText("Balance: $" + "00.00");
         finalBalanceTV.setText("Balance: $" + decimalFormattedBalAmt);
+    }
 
-        firstPayPeriodButton.setOnClickListener(this);
-        secondPayPeriodButton.setOnClickListener(this);
+    @Override
+    public void onResume() {
+        setBalanceAmount();
+        super.onResume();
     }
 
     @Override
@@ -62,7 +69,5 @@ public class BalanceSheetFragment extends BaseBalanceSheetFragment implements Vi
             startActivity(intent);
         }
     }
-
-
 
 }
