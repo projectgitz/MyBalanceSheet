@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.view.fragments;
+package com.chethan.balancesheet.view.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.chetan.balancesheet.R;
-import com.chetan.balancesheet.database.BalanceSheetDBHandler;
-import com.chetan.balancesheet.utils.Utils;
+import com.chethan.balancesheet.R;
+import com.chethan.balancesheet.database.BalanceSheetDBHandler;
+import com.chethan.balancesheet.utils.Utils;
 
 /**
  * Created by 3164 on 24-01-2017.

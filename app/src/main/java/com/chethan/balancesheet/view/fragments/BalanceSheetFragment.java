@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.view.fragments;
+package com.chethan.balancesheet.view.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.chetan.balancesheet.R;
-import com.chetan.balancesheet.base.BalanceSheetApplication;
-import com.chetan.balancesheet.database.BalanceSheetDBHandler;
-import com.chetan.balancesheet.utils.Utils;
-import com.chetan.balancesheet.view.activities.PayPeriodActivity;
+import com.chethan.balancesheet.R;
+import com.chethan.balancesheet.base.BalanceSheetApplication;
+import com.chethan.balancesheet.database.BalanceSheetDBHandler;
+import com.chethan.balancesheet.utils.Utils;
+import com.chethan.balancesheet.view.activities.PayPeriodActivity;
 
 /**
  * Created by 3164 on 24-01-2017.

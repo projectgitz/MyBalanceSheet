@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.database;
+package com.chethan.balancesheet.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
-import com.chetan.balancesheet.base.BalanceSheetApplication;
-import com.chetan.balancesheet.model.BalanceSheetDetails;
-import com.chetan.balancesheet.model.SupportTableDetails;
+import com.chethan.balancesheet.base.BalanceSheetApplication;
+import com.chethan.balancesheet.model.BalanceSheetDetails;
+import com.chethan.balancesheet.model.SupportTableDetails;
 
 import java.text.SimpleDateFormat;
 

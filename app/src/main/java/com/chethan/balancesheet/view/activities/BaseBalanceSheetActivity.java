@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.view.activities;
+package com.chethan.balancesheet.view.activities;
 
 import android.support.v7.app.AppCompatActivity;
 

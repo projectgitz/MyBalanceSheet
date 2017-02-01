@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.utils;
+package com.chethan.balancesheet.utils;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

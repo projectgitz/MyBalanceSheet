@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.model;
+package com.chethan.balancesheet.model;
 
 import android.util.Log;
 

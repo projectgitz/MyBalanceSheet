@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.view.fragments;
+package com.chethan.balancesheet.view.fragments;
 
 import android.support.v4.app.Fragment;
 

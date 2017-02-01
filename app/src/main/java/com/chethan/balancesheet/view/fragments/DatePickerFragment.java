@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.view.fragments;
+package com.chethan.balancesheet.view.fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -12,7 +12,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chetan.balancesheet.R;
+import com.chethan.balancesheet.R;
 
 import org.w3c.dom.Text;
 

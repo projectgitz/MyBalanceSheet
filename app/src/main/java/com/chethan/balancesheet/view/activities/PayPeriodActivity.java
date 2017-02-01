@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.view.activities;
+package com.chethan.balancesheet.view.activities;
 
 import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
@@ -14,12 +14,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chetan.balancesheet.R;
-import com.chetan.balancesheet.database.BalanceSheetDBHandler;
-import com.chetan.balancesheet.model.BalanceSheetDetails;
-import com.chetan.balancesheet.utils.AppConstants;
-import com.chetan.balancesheet.utils.Utils;
-import com.chetan.balancesheet.view.fragments.DatePickerFragment;
+import com.chethan.balancesheet.R;
+import com.chethan.balancesheet.database.BalanceSheetDBHandler;
+import com.chethan.balancesheet.model.BalanceSheetDetails;
+import com.chethan.balancesheet.utils.AppConstants;
+import com.chethan.balancesheet.utils.Utils;
+import com.chethan.balancesheet.view.fragments.DatePickerFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

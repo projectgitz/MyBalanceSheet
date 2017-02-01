@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.model;
+package com.chethan.balancesheet.model;
 
 /**
  * Created by ckumo on 12/8/2016.

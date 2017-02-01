@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.view.activities;
+package com.chethan.balancesheet.view.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,12 +13,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.chetan.balancesheet.R;
-import com.chetan.balancesheet.view.fragments.BalanceSheetFragment;
-import com.chetan.balancesheet.view.fragments.MonthlyViewFragment;
-import com.chetan.balancesheet.view.fragments.OtherDeductionFragment;
-import com.chetan.balancesheet.view.fragments.SummaryFragment;
-import com.chetan.balancesheet.view.fragments.SupportFragment;
+import com.chethan.balancesheet.R;
+import com.chethan.balancesheet.view.fragments.BalanceSheetFragment;
+import com.chethan.balancesheet.view.fragments.MonthlyViewFragment;
+import com.chethan.balancesheet.view.fragments.OtherDeductionFragment;
+import com.chethan.balancesheet.view.fragments.SummaryFragment;
+import com.chethan.balancesheet.view.fragments.SupportFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

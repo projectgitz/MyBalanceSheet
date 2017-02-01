@@ -1,4 +1,4 @@
-package com.chetan.balancesheet.database;
+package com.chethan.balancesheet.database;
 
 /**
  * Created by 3164 on 12-12-2016.
