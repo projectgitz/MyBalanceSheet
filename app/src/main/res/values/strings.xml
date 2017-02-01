@@ -4,4 +4,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_settings_actvity">Settings</string>
+    <string name="first_pay_period">First Pay Period</string>
+    <string name="second_pay_period">Second Pay Period</string>
 </resources>

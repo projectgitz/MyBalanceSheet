@@ -7,19 +7,18 @@ import java.util.Date;
 /**
  * Created by ckumo on 10/28/2016.
  */
-
 public class BalanceSheetDetails {
 
     private int _id;
     private String _startDate;
     private String _endDate;
     private String _payCheckDate;
-    private float _openingBalance;
+    private double _openingBalance;
     private float _rate;
     private int _hours;
-    private float _credit;
-    private float _debit;
-    private float _endingBalance;
+    private double _credit;
+    private double _debit;
+    private double _endingBalance;
 
     public BalanceSheetDetails() {
     }
@@ -63,11 +62,11 @@ public class BalanceSheetDetails {
         this._payCheckDate = _payCheckDate;
     }
 
-    public float getOpeningBalance() {
+    public double getOpeningBalance() {
         return _openingBalance;
     }
 
-    public void setOpeningBalance(float _openingBalance) {
+    public void setOpeningBalance(double _openingBalance) {
         this._openingBalance = _openingBalance;
     }
 
@@ -87,27 +86,27 @@ public class BalanceSheetDetails {
         this._hours = _hours;
     }
 
-    public float getCredit() {
+    public double getCredit() {
         return _credit;
     }
 
-    public void setCredit(float _credit) {
+    public void setCredit(double _credit) {
         this._credit = _credit;
     }
 
-    public float getDebit() {
+    public double getDebit() {
         return _debit;
     }
 
-    public void setDebit(float _debit) {
+    public void setDebit(double _debit) {
         this._debit = _debit;
     }
 
-    public float getEndingBalance() {
+    public double getEndingBalance() {
         return _endingBalance;
     }
 
-    public void setEndingBalance(float _endingBalance) {
+    public void setEndingBalance(double _endingBalance) {
         this._endingBalance = _endingBalance;
     }
 

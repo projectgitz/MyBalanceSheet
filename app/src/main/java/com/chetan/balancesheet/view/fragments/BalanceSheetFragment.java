@@ -54,11 +54,15 @@ public class BalanceSheetFragment extends BaseBalanceSheetFragment implements Vi
     public void onClick(View v) {
         if (v == firstPayPeriodButton) {
             Intent intent = new Intent(getContext(), PayPeriodActivity.class);
+            intent.putExtra(PayPeriodActivity.EXTRA_PAYPERIOD_TYPE,1);
             startActivity(intent);
         } else if (v == secondPayPeriodButton) {
             Intent intent = new Intent(getContext(), PayPeriodActivity.class);
+            intent.putExtra(PayPeriodActivity.EXTRA_PAYPERIOD_TYPE,2);
             startActivity(intent);
         }
     }
+
+
 
 }

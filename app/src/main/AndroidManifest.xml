@@ -26,7 +26,8 @@
             android:parentActivityName=".view.activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".view.activities.PayPeriodActivity" />
+        <activity android:name=".view.activities.PayPeriodActivity"
+            android:parentActivityName=".view.activities.MainActivity"/>
     </application>
 
 </manifest>
