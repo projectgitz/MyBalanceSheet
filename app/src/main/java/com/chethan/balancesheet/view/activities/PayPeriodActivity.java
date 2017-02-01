@@ -44,6 +44,8 @@ public class PayPeriodActivity extends AppCompatActivity implements View.OnClick
     private BalanceSheetDetails mBalanceSheetDetails;
     private SimpleDateFormat dateFormat;
 
+    boolean allFieldsEntered = false;
+
     private void evaluateBalanceSheet() {
         int hours = mBalanceSheetDetails.getHours();
         double openingBalance = mBalanceSheetDetails.getOpeningBalance();
@@ -150,9 +152,14 @@ public class PayPeriodActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.submit_btn) {
-            BalanceSheetDBHandler.getInstance().insertPayCheck(mBalanceSheetDetails);
-            Toast.makeText(this, "PayCheck Inserted: ", Toast.LENGTH_SHORT).show();
-            finish();
+            allFieldsEntered = checkAllFieldsAreEntered();
+            if(allFieldsEntered) {
+                BalanceSheetDBHandler.getInstance().insertPayCheck(mBalanceSheetDetails);
+                Toast.makeText(this, "PayCheck Inserted: ", Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                Toast.makeText(this, "Please Enter All Fields...", Toast.LENGTH_SHORT).show();
+            }
         } else if (v.getId() == R.id.start_pay_period_et) {
             DatePickerFragment picker = new DatePickerFragment();
             picker.setDatePickerListener(new DatePickerDialog.OnDateSetListener() {
@@ -193,6 +200,22 @@ public class PayPeriodActivity extends AppCompatActivity implements View.OnClick
             });
             picker.show(getFragmentManager(), "PayCheckDatePicker");
         }
+    }
+
+
+    //To Check whether all fields are entered...
+    public boolean checkAllFieldsAreEntered() {
+        if(startPayDate.getText().length() > 0
+                &&  endPayDate.getText().length() > 0
+                && payCheckDate.getText().length() > 0
+                && rateET.getText().toString().length() > 0
+                && hoursET.getText().length() > 0
+                && creditET.getText().length() > 0
+                && debitET.getText().length() > 0
+                && endingBalanceTV.getText().length() > 0) {
+            allFieldsEntered = true;
+        }
+        return allFieldsEntered;
     }
 
 }
