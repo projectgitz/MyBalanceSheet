@@ -3,6 +3,7 @@ package com.chetan.balancesheet.view.fragments;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -21,12 +22,14 @@ import java.util.Calendar;
 /**
  * Created by ckumo on 1/26/2017.
  */
-public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+public class DatePickerFragment extends DialogFragment {
 
-    private TextView tv;
+    private DatePickerDialog.OnDateSetListener dateListener;
 
-    public void DateView(View v) {
-        tv = (TextView) v;
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
     }
 
     @Override
@@ -38,12 +41,10 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         //Create a new instance of DatePickerDialog and return it
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        return new DatePickerDialog(getActivity(), dateListener, year, month, day);
     }
 
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int day) {
-        tv.setText((month + 1) + "/" + day + "/" + year);
+    public void setDatePickerListener(DatePickerDialog.OnDateSetListener onDateSetListener) {
+        this.dateListener=onDateSetListener;
     }
-
 }

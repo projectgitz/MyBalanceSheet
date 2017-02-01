@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import com.chetan.balancesheet.base.BalanceSheetApplication;
@@ -140,6 +141,19 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
 
         Log.d("Database", "after inserting cost in support..." + supportTableDetails.getCost());
         database.close();
+    }
+
+    public double getTotalSupportAmt() {
+        double supportAmt = 0;
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("select sum(" + DBConstants.COLUMN_SUPPORT_AMOUNT + ") from "
+                + DBConstants.TABLE_NAME_SUPPORT, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            supportAmt = cursor.getDouble(0);
+        }
+        cursor.close();
+        return supportAmt;
     }
 
 }
