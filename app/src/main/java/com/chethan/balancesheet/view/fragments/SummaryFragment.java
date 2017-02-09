@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.chethan.balancesheet.R;
@@ -19,6 +20,7 @@ public class SummaryFragment extends BaseBalanceSheetFragment {
 
     private TextView finalBalanceTV;
     private TextView supportDeducTV;
+    private Button finalBalBtn;
 
     @Override
     public void onCreate( Bundle savedInstanceState) {
@@ -35,12 +37,20 @@ public class SummaryFragment extends BaseBalanceSheetFragment {
         super.onViewCreated(view, savedInstanceState);
         finalBalanceTV = (TextView) view.findViewById(R.id.balance_sheet_balance_amount_tv);
         supportDeducTV = (TextView) view.findViewById(R.id.support_deductions);
+        finalBalBtn = (Button) view.findViewById(R.id.final_balance_after_deductions);
 
+        totSummaryCalculations();
+    }
+
+    private void totSummaryCalculations() {
         double totalSupportAmt = BalanceSheetDBHandler.getInstance().getTotalSupportAmt();
-        supportDeducTV.setText("Support Deductions: $" + String.valueOf(totalSupportAmt));
         double balanceAmount = BalanceSheetDBHandler.getInstance().getOpeningBalance();
-        String decimalFormtedBalanceAmt = Utils.decimalFormatter(balanceAmount);
-        finalBalanceTV.setText("Balance Amount: $" + decimalFormtedBalanceAmt);
+
+        double finalBalAmount = balanceAmount - totalSupportAmt;
+
+        finalBalanceTV.setText("Balance Amount: $" + String.valueOf(Utils.decimalFormatter(balanceAmount)));
+        supportDeducTV.setText("Support Deductions: $" + String.valueOf(Utils.decimalFormatter(totalSupportAmt)));
+        finalBalBtn.setText("$" + String.valueOf(Utils.decimalFormatter(finalBalAmount)));
     }
 
     @Override
