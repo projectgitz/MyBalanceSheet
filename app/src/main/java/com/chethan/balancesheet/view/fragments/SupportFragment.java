@@ -16,6 +16,7 @@ import com.chethan.balancesheet.adapter.SupportAdapter;
 import com.chethan.balancesheet.database.BalanceSheetDBHandler;
 import com.chethan.balancesheet.model.SupportTableDetails;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SupportFragment extends BaseBalanceSheetFragment implements View.OnClickListener {
@@ -43,11 +44,13 @@ public class SupportFragment extends BaseBalanceSheetFragment implements View.On
         supportTableDetails = new SupportTableDetails();
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-
         supportItems = BalanceSheetDBHandler.getInstance().getSupportItems();
+        if(supportItems == null) {
+            supportItems = new ArrayList<>();
+        }
+        mAdapter = new SupportAdapter(supportItems);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        mAdapter = new SupportAdapter(supportItems);
         mRecyclerView.setAdapter(mAdapter);
 
         monthYearTV = (EditText) view.findViewById(R.id.select_date_tv);
@@ -56,15 +59,20 @@ public class SupportFragment extends BaseBalanceSheetFragment implements View.On
         addBtn = (Button) view.findViewById(R.id.add_btn);
         addBtn.setOnClickListener(this);
 
+        calculateTotDeducAmt();
+
+    }
+
+    private void calculateTotDeducAmt() {
         double totalSupportAmt = BalanceSheetDBHandler.getInstance().getTotalSupportAmt();
         totDeducTV.setText(String.valueOf(totalSupportAmt));
-
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.add_btn) {
             insertSupportDetailsintoDB();
+            calculateTotDeducAmt();
         }
     }
 
