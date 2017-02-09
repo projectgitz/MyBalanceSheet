@@ -13,6 +13,8 @@ import com.chethan.balancesheet.model.BalanceSheetDetails;
 import com.chethan.balancesheet.model.SupportTableDetails;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ckumo on 10/26/2016.
@@ -115,7 +117,6 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
         values.put(DBConstants.COLUMN_DEBIT, balanceSheetDetails.getDebit());
         values.put(DBConstants.COLUMN_ENDING_BALANCE, balanceSheetDetails.getEndingBalance());
         database.insert(DBConstants.TABLE_NAME_BALANCESHEET, null, values);
-        database.close();
     }
 
     public double getOpeningBalance() {
@@ -130,17 +131,15 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
         return openingBalance;
     }
 
-    public void insertSupportAmount (SupportTableDetails supportTableDetails) {
+    public boolean insertSupportAmount(SupportTableDetails supportTableDetails) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBConstants.COLUMN_SUPPORT_MONTH_YEAR, supportTableDetails.getDate());
         values.put(DBConstants.COLUMN_SUPPORT_AMOUNT, supportTableDetails.getCost());
-        database.insert(DBConstants.TABLE_NAME_SUPPORT, null, values);
 
         Log.d("Database", "after inserting date in support..." + supportTableDetails.getDate());
         Log.d("Database", "after inserting cost in support..." + supportTableDetails.getCost());
-
-        database.close();
+        return database.insert(DBConstants.TABLE_NAME_SUPPORT, null, values) != -1;
     }
 
     public double getTotalSupportAmt() {
@@ -154,6 +153,21 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
         }
         cursor.close();
         return supportAmt;
+    }
+
+    public List<SupportTableDetails> getSupportItems() {
+        List<SupportTableDetails> supportTableDetailsList = null;
+
+        Cursor mCursor = getReadableDatabase().query(DBConstants.TABLE_NAME_SUPPORT, null, null, null, null, null, null);
+        if (mCursor.getCount() > 0) {
+            supportTableDetailsList = new ArrayList<>();
+            for (mCursor.moveToFirst(); !mCursor.isAfterLast(); mCursor.moveToNext()) {
+                SupportTableDetails mSupportTableDetails = new SupportTableDetails(mCursor.getString(mCursor.getColumnIndex(DBConstants.COLUMN_SUPPORT_MONTH_YEAR)),
+                        mCursor.getInt(mCursor.getColumnIndex(DBConstants.COLUMN_SUPPORT_AMOUNT)));
+                supportTableDetailsList.add(mSupportTableDetails);
+            }
+        }
+        return supportTableDetailsList;
     }
 
 }
