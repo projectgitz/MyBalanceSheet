@@ -81,8 +81,7 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
     private void createSupportTable(SQLiteDatabase db) {
         String query = " CREATE TABLE IF NOT EXISTS " + DBConstants.TABLE_NAME_SUPPORT + "(" +
                 DBConstants.COLUMN_SUPPORT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                DBConstants.COLUMN_SUPPORT_MONTH + " INTEGER," +
-                DBConstants.COLUMN_SUPPORT_YEAR + " INTEGER," +
+                DBConstants.COLUMN_SUPPORT_MONTH_YEAR + " DATE," +
                 DBConstants.COLUMN_SUPPORT_AMOUNT + " INTEGER" + ")";
         db.execSQL(query);
         Log.d("DATABASE", "CreateSupportTable is Called....");
@@ -131,15 +130,16 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
         return openingBalance;
     }
 
-    public void insertSupportAmount(SupportTableDetails supportTableDetails) {
+    public void insertSupportAmount (SupportTableDetails supportTableDetails) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DBConstants.COLUMN_SUPPORT_MONTH, supportTableDetails.getMonth());
-        values.put(DBConstants.COLUMN_SUPPORT_YEAR, supportTableDetails.getYear());
+        values.put(DBConstants.COLUMN_SUPPORT_MONTH_YEAR, supportTableDetails.getDate());
         values.put(DBConstants.COLUMN_SUPPORT_AMOUNT, supportTableDetails.getCost());
         database.insert(DBConstants.TABLE_NAME_SUPPORT, null, values);
 
+        Log.d("Database", "after inserting date in support..." + supportTableDetails.getDate());
         Log.d("Database", "after inserting cost in support..." + supportTableDetails.getCost());
+
         database.close();
     }
 

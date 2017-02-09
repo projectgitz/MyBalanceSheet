@@ -18,6 +18,7 @@ import com.chethan.balancesheet.utils.Utils;
 public class SummaryFragment extends BaseBalanceSheetFragment {
 
     private TextView finalBalanceTV;
+    private TextView supportDeducTV;
 
     @Override
     public void onCreate( Bundle savedInstanceState) {
@@ -33,7 +34,10 @@ public class SummaryFragment extends BaseBalanceSheetFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         finalBalanceTV = (TextView) view.findViewById(R.id.balance_sheet_balance_amount_tv);
+        supportDeducTV = (TextView) view.findViewById(R.id.support_deductions);
 
+        double totalSupportAmt = BalanceSheetDBHandler.getInstance().getTotalSupportAmt();
+        supportDeducTV.setText("Support Deductions: $" + String.valueOf(totalSupportAmt));
         double balanceAmount = BalanceSheetDBHandler.getInstance().getOpeningBalance();
         String decimalFormtedBalanceAmt = Utils.decimalFormatter(balanceAmount);
         finalBalanceTV.setText("Balance Amount: $" + decimalFormtedBalanceAmt);

@@ -8,32 +8,24 @@ import java.util.Date;
 
 public class SupportTableDetails {
 
-    private Date date;
+    private String date;
     private int _cost;
-    private String _month;
-    private String _year;
 
-    public String getMonth() {
-        return _month;
+    //Default Constructor
+    public SupportTableDetails() {
+
     }
 
-    public void setMonth(String _month) {
-        this._month = _month;
+    public SupportTableDetails(String date, int _cost) {
+        this.date = date;
+        this._cost = _cost;
     }
 
-    public String getYear() {
-        return _year;
-    }
-
-    public void setYear(String _year) {
-        this._year = _year;
-    }
-
-    public Date getDate() {
+   public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

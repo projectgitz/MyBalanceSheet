@@ -28,8 +28,7 @@ public class DBConstants {
 
     //For Support
     public final static String COLUMN_SUPPORT_ID = "id";
-    public final static String COLUMN_SUPPORT_MONTH = "month";
-    public final static String COLUMN_SUPPORT_YEAR = "year";
+    public final static String COLUMN_SUPPORT_MONTH_YEAR = "monthYear";
     public final static String COLUMN_SUPPORT_AMOUNT = "amount";
 
     //Other Deduction
