@@ -6,4 +6,5 @@
     <string name="title_activity_settings_actvity">Settings</string>
     <string name="first_pay_period">First Pay Period</string>
     <string name="second_pay_period">Second Pay Period</string>
+    <string name="title_activity_settings">Settings</string>
 </resources>

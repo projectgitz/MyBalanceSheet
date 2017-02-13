@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/other_amount_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_alignBottom="@+id/other_amount_et"
+            android:layout_alignTop="@+id/other_amount_et"
+            android:layout_alignParentLeft="true"
+            android:text="Enter Amount:($)"/>
+
+        <EditText
+            android:id="@+id/other_amount_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:hint="$"
+            android:paddingRight="20dp"
+            android:ems="8"
+            android:layout_alignParentRight="true"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/others_paycheck_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/other_amount_lay">
+
+        <TextView
+            android:id="@+id/others_paycheck_tv"
+            android:layout_width="0dp"
+            android:layout_below="@id/other_amount_et"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="PayCheck Date: "
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/others_date_tv"
+            android:layout_width="0dp"
+            android:layout_below="@id/other_amount_et"
+            android:layout_weight="1"
+            android:text="Select Date"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/other_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:hint="Enter Description"
+        android:layout_below="@id/others_paycheck_lay"/>
+
+
+    <Button
+        android:id="@+id/other_add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Add"
+        android:layout_below="@+id/other_description"
+        android:layout_centerHorizontal="true"/>
+
+
+
+
+</RelativeLayout>

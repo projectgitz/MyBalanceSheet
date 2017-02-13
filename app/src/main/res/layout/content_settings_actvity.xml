@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_settings_actvity"
+    android:background="#F5F5F5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -13,8 +14,93 @@
     tools:context=".view.activities.SettingsActvity"
     tools:showIn="@layout/activity_settings_actvity">
 
-    <android.support.v7.widget.RecyclerView
+ <android.support.v7.widget.CardView
+     android:id="@+id/settings_rate_cv"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     app:cardElevation="5dp">
+
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="65dp"
+         android:gravity="center"
+         android:padding="5dp">
+
+         <TextView
+             android:id="@+id/settings_rate_tv"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:gravity="center"
+             android:ems="5"
+             android:textStyle="bold"
+             android:layout_alignTop="@+id/settings_rate_et"
+             android:layout_alignBottom="@+id/settings_rate_et"
+             android:text="Rate"
+             android:textSize="18sp"
+             android:layout_alignParentLeft="true"/>
+
+         <EditText
+             android:id="@+id/settings_rate_et"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:inputType="numberDecimal"
+             android:ems="5"
+             android:hint="Enter Rate"
+             android:layout_centerHorizontal="true"/>
+
+         <Button
+             android:id="@+id/settings_add_btn"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Set"
+             android:layout_alignParentRight="true"/>
+     </RelativeLayout>
+ </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/settings_sync_cv"
+        android:layout_below="@id/settings_rate_cv"
+        android:layout_marginTop="10dp"
+        app:cardElevation="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/settings_sync_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sync_iv"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:id="@+id/settings_sync_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:layout_alignTop="@id/settings_sync_iv"
+                android:layout_alignBottom="@id/settings_sync_iv"
+                android:layout_toRightOf="@id/settings_sync_iv"
+                android:gravity="center"
+                android:text="Sync Data"
+                android:textSize="18sp"/>
+
+
+            <CheckBox
+                android:id="@+id/settings_sync_check_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignTop="@id/settings_sync_iv"
+                android:layout_alignBottom="@id/settings_sync_iv"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>
