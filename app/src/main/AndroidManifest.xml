@@ -19,15 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.activities.SettingsActvity"
             android:label="@string/title_activity_settings_actvity"
             android:parentActivityName=".view.activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".view.activities.PayPeriodActivity"
-            android:parentActivityName=".view.activities.MainActivity"/>
+        <activity
+            android:name=".view.activities.PayPeriodActivity"
+            android:parentActivityName=".view.activities.MainActivity" />
     </application>
 
 </manifest>
