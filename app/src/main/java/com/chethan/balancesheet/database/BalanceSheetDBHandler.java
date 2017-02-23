@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.chethan.balancesheet.base.BalanceSheetApplication;
 import com.chethan.balancesheet.model.BalanceSheetDetails;
+import com.chethan.balancesheet.model.OtherDeductionDetails;
 import com.chethan.balancesheet.model.SupportTableDetails;
 
 import java.text.SimpleDateFormat;
@@ -27,6 +28,7 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
     private String TABLE_NAME[] = {
             DBConstants.TABLE_NAME_BALANCESHEET,
             DBConstants.TABLE_NAME_SUPPORT,
+            DBConstants.TABLE_NAME_OTHER_DEDUCTION,
             DBConstants.TABLE_NAME_MONTHLYVIEW
     };
     private SimpleDateFormat dateFormat;
@@ -49,7 +51,7 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
         Log.d("DATABASE", "BalanceSheetDBHandler onCreate() is Called....");
         createBalanceSheetTable(db);
         createSupportTable(db);
-//        createMonthlyViewTable(db);
+        createOtherDeductionTable(db);
     }
 
     @Override
@@ -83,8 +85,19 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
     private void createSupportTable(SQLiteDatabase db) {
         String query = " CREATE TABLE IF NOT EXISTS " + DBConstants.TABLE_NAME_SUPPORT + "(" +
                 DBConstants.COLUMN_SUPPORT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                DBConstants.COLUMN_SUPPORT_MONTH_YEAR + " DATE," +
+                DBConstants.COLUMN_SUPPORT_MONTH_YEAR + " DATE UNIQUE," +
                 DBConstants.COLUMN_SUPPORT_AMOUNT + " INTEGER" + ")";
+        db.execSQL(query);
+        Log.d("DATABASE", "CreateSupportTable is Called....");
+    }
+
+    //creating Other Deduction Table
+    private void createOtherDeductionTable(SQLiteDatabase db) {
+        String query = " CREATE TABLE IF NOT EXISTS " + DBConstants.TABLE_NAME_OTHER_DEDUCTION + "(" +
+                DBConstants.COLUMN_OTHER_DEDUCTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                DBConstants.COLUMN_OTHER_DEDUCTION_MONTH_YEAR + " DATE UNIQUE," +
+                DBConstants.COLUMN_OTHER_DEDUCTION_AMOUNT + " INTEGER," +
+                DBConstants.COLUMN_OTHER_DEDUCTION_DESCRIPTION + " TEXT)";
         db.execSQL(query);
         Log.d("DATABASE", "CreateSupportTable is Called....");
     }
@@ -142,6 +155,17 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
         return database.insert(DBConstants.TABLE_NAME_SUPPORT, null, values) != -1;
     }
 
+    public boolean insertOtherDeductionAmount(OtherDeductionDetails otherDeductionDetails) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBConstants.COLUMN_OTHER_DEDUCTION_MONTH_YEAR, otherDeductionDetails.getDate());
+        values.put(DBConstants.COLUMN_OTHER_DEDUCTION_AMOUNT, otherDeductionDetails.getCost());
+
+        Log.d("Database", "after inserting date in support..." + otherDeductionDetails.getDate());
+        Log.d("Database", "after inserting cost in support..." + otherDeductionDetails.getCost());
+        return database.insert(DBConstants.TABLE_NAME_OTHER_DEDUCTION, null, values) != -1;
+    }
+
     public double getTotalSupportAmt() {
         double supportAmt = 0;
         SQLiteDatabase database = this.getReadableDatabase();
@@ -155,14 +179,45 @@ public class BalanceSheetDBHandler extends SQLiteOpenHelper {
         return supportAmt;
     }
 
+    public double getTotalOtherDeductionAmt() {
+        double otherDeductionAmt = 0;
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("select sum(" + DBConstants.COLUMN_OTHER_DEDUCTION_AMOUNT + ") from "
+                + DBConstants.TABLE_NAME_OTHER_DEDUCTION, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            otherDeductionAmt = cursor.getDouble(0);
+        }
+        cursor.close();
+        return otherDeductionAmt;
+    }
+
+    public List<OtherDeductionDetails> getOtherDeductionDetailItems() {
+        List<OtherDeductionDetails> otherDeductionDetailsList = null;
+        Cursor mCursor = getReadableDatabase().query(DBConstants.TABLE_NAME_OTHER_DEDUCTION, null, null, null,
+                null, null, DBConstants.COLUMN_OTHER_DEDUCTION_MONTH_YEAR);
+        if (mCursor.getCount() > 0) {
+            otherDeductionDetailsList = new ArrayList<>();
+            for (mCursor.moveToFirst(); !mCursor.isAfterLast(); mCursor.moveToNext()) {
+                OtherDeductionDetails otherDeductionDetails = new OtherDeductionDetails(
+                        mCursor.getString(mCursor.getColumnIndex(DBConstants.COLUMN_OTHER_DEDUCTION_MONTH_YEAR)),
+                        mCursor.getInt(mCursor.getColumnIndex(DBConstants.COLUMN_OTHER_DEDUCTION_AMOUNT)),
+                        mCursor.getString(mCursor.getColumnIndex(DBConstants.COLUMN_OTHER_DEDUCTION_DESCRIPTION)));
+                otherDeductionDetailsList.add(otherDeductionDetails);
+            }
+        }
+        return otherDeductionDetailsList;
+    }
+
     public List<SupportTableDetails> getSupportItems() {
         List<SupportTableDetails> supportTableDetailsList = null;
-
-        Cursor mCursor = getReadableDatabase().query(DBConstants.TABLE_NAME_SUPPORT, null, null, null, null, null, null);
+        Cursor mCursor = getReadableDatabase().query(DBConstants.TABLE_NAME_SUPPORT, null, null, null,
+                null, null, DBConstants.COLUMN_SUPPORT_MONTH_YEAR);
         if (mCursor.getCount() > 0) {
             supportTableDetailsList = new ArrayList<>();
             for (mCursor.moveToFirst(); !mCursor.isAfterLast(); mCursor.moveToNext()) {
-                SupportTableDetails mSupportTableDetails = new SupportTableDetails(mCursor.getString(mCursor.getColumnIndex(DBConstants.COLUMN_SUPPORT_MONTH_YEAR)),
+                SupportTableDetails mSupportTableDetails = new SupportTableDetails(
+                        mCursor.getString(mCursor.getColumnIndex(DBConstants.COLUMN_SUPPORT_MONTH_YEAR)),
                         mCursor.getInt(mCursor.getColumnIndex(DBConstants.COLUMN_SUPPORT_AMOUNT)));
                 supportTableDetailsList.add(mSupportTableDetails);
             }

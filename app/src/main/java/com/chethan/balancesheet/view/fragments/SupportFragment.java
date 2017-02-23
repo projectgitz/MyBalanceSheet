@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chethan.balancesheet.R;
 import com.chethan.balancesheet.adapter.SupportAdapter;
+import com.chethan.balancesheet.base.BalanceSheetApplication;
 import com.chethan.balancesheet.database.BalanceSheetDBHandler;
 import com.chethan.balancesheet.model.SupportTableDetails;
 
@@ -24,7 +26,6 @@ public class SupportFragment extends BaseBalanceSheetFragment implements View.On
     private EditText monthYearTV;
     private EditText amountET;
     private Button addBtn;
-    private SupportTableDetails supportTableDetails;
     private TextView totDeducTV;
     private RecyclerView mRecyclerView;
     private SupportAdapter mAdapter;
@@ -37,19 +38,13 @@ public class SupportFragment extends BaseBalanceSheetFragment implements View.On
         return LayoutInflater.from(getContext()).inflate(R.layout.fragment_support, container, false);
     }
 
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        supportTableDetails = new SupportTableDetails();
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         supportItems = BalanceSheetDBHandler.getInstance().getSupportItems();
-        if(supportItems == null) {
-            supportItems = new ArrayList<>();
-        }
         mAdapter = new SupportAdapter(supportItems);
-
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mAdapter);
 
@@ -60,7 +55,6 @@ public class SupportFragment extends BaseBalanceSheetFragment implements View.On
         addBtn.setOnClickListener(this);
 
         calculateTotDeducAmt();
-
     }
 
     private void calculateTotDeducAmt() {
@@ -71,18 +65,21 @@ public class SupportFragment extends BaseBalanceSheetFragment implements View.On
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.add_btn) {
-            insertSupportDetailsintoDB();
+            insertSupportDetailsIntoDB();
             calculateTotDeducAmt();
         }
     }
 
-    private void insertSupportDetailsintoDB() {
+    private void insertSupportDetailsIntoDB() {
+        SupportTableDetails supportTableDetails = new SupportTableDetails();
         supportTableDetails.setCost(Integer.parseInt(amountET.getText().toString()));
         supportTableDetails.setDate(monthYearTV.getText().toString());
         if (BalanceSheetDBHandler.getInstance().insertSupportAmount(supportTableDetails)) {
-            supportItems.add(supportTableDetails);
+            supportItems = BalanceSheetDBHandler.getInstance().getSupportItems();
+            mAdapter.notifyDataSetChanged();
+        } else {
+            Toast.makeText(BalanceSheetApplication.getInstance(), "Date already exists", Toast.LENGTH_LONG).show();
         }
-        mAdapter.notifyDataSetChanged();
-
     }
+
 }
